@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>A Little Birthday Surprise ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ff4fa0;--deep:#b51f70;--rose:#ffe5f0;--cream:#fff8ef;--ink:#68224c}
+*{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;font-family:'DM Sans',sans-serif;color:var(--ink)}
+body{overflow:hidden;background:radial-gradient(circle at 50% 30%,#fffaf5 0,#ffeaf3 48%,#ffd7e8 100%)}
+button{font:inherit;border:0;cursor:pointer}.screen{position:fixed;inset:0;display:none;overflow:hidden;padding:clamp(18px,4vw,32px);padding-top:max(22px,env(safe-area-inset-top));padding-bottom:max(22px,env(safe-area-inset-bottom))}
+.screen.active{display:flex;align-items:center;justify-content:center;animation:fadeIn .7s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:10px;font-weight:700;color:#c45a91}
+.title{font-family:'Playfair Display',serif;font-weight:700;line-height:1.06;letter-spacing:-.035em}
+.btn{background:linear-gradient(135deg,#ff72ad,#c9257b);color:white;padding:13px 22px;border-radius:999px;font-weight:700;font-size:13px;box-shadow:0 8px 22px #d8448c36}
+.btn:active{transform:scale(.97)}.small{font-size:12px;line-height:1.65;color:#9d5b7d}.bengali{font-family:'Noto Serif Bengali',serif;line-height:1.9}
+#envelopeScreen{flex-direction:column;gap:20px;text-align:center}
+.envelope{width:min(78vw,340px);aspect-ratio:1.48;position:relative;filter:drop-shadow(0 18px 24px #d15c9030);cursor:pointer;animation:float 3.4s ease-in-out infinite}
+.env-back{position:absolute;inset:0;background:#fff5eb;border:1px solid #f7c6da;border-radius:7px}.env-flap{position:absolute;inset:0;background:#f5b8d2;clip-path:polygon(0 0,100% 0,50% 66%);z-index:3}.env-left{position:absolute;inset:0;background:#ffe0eb;clip-path:polygon(0 0,50% 55%,0 100%);z-index:2}.env-right{position:absolute;inset:0;background:#ffd0e1;clip-path:polygon(100% 0,50% 55%,100% 100%);z-index:2}.env-bottom{position:absolute;inset:0;background:#fff0e7;clip-path:polygon(0 100%,50% 48%,100% 100%);z-index:4}.seal{position:absolute;z-index:5;left:50%;top:48%;transform:translate(-50%,-50%);font-size:29px;color:#c3317d}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+#cakeScreen{flex-direction:column;text-align:center;gap:16px;background:radial-gradient(circle,#fff5fa,#ffd7e9)}
+.cake-scene{position:relative;width:min(70vw,280px);height:min(60vw,230px);display:grid;place-items:center}.candles{font-size:43px;filter:drop-shadow(0 0 12px #ffb52e);animation:glow 1.4s infinite alternate}.cake{position:absolute;bottom:4px;font-size:65px;filter:drop-shadow(0 8px 10px #c9447b25);animation:cakeRise 1.4s ease both}
+@keyframes glow{to{filter:drop-shadow(0 0 19px #ffb52e)}}@keyframes cakeRise{from{transform:translateY(24px) scale(.75);opacity:0}to{transform:none;opacity:1}}
+#treeScreen{background:radial-gradient(ellipse at 75% 35%,#fff9fc,#ffe1ee 72%);flex-direction:row;justify-content:space-around;gap:0}
+.tree-copy{z-index:2;align-self:flex-end;margin-bottom:18%;width:48%;max-width:230px;text-align:left}.tree-copy h1{font-size:clamp(26px,7vw,42px);color:#b92070;margin:0 0 12px}.tree-copy p{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:#a45c7c;line-height:1.7}
+.tree-art{position:relative;width:48%;height:min(65vh,500px);align-self:center;flex-shrink:0}.trunk{position:absolute;bottom:9%;left:48%;width:12px;height:40%;background:linear-gradient(90deg,#7b3c32,#c47a6a,#8a463d);border-radius:10px;transform-origin:bottom;animation:trunk 1.5s .25s forwards;transform:scaleY(0)}
+@keyframes trunk{to{transform:scaleY(1)}}.branch{position:absolute;bottom:32%;left:50%;width:8px;height:24%;background:#a45d52;border-radius:10px;transform-origin:bottom;animation:branches 1s 1.25s forwards;transform:rotate(var(--a)) scaleY(0)}.branch.left{--a:-48deg}.branch.right{--a:48deg}@keyframes branches{to{transform:rotate(var(--a)) scaleY(1)}}
+.canopy{position:absolute;inset:8% 0 34%;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff1f9,#ffd0e8 60%,#ff9dcc);filter:drop-shadow(0 10px 14px #df579033);opacity:0;transform:scale(.15);transform-origin:50% 82%;animation:bloom 1.8s 2s forwards}
+@keyframes bloom{65%{opacity:1;transform:scale(1.07)}100%{opacity:1;transform:scale(1)}}
+.leaf{position:absolute;font-size:clamp(13px,3.5vw,22px);filter:drop-shadow(0 0 5px #f7bd42);opacity:0;animation:leaf .65s ease-out forwards,twinkle 2s ease-in-out infinite}
+@keyframes leaf{to{opacity:1;transform:scale(1)}}@keyframes twinkle{50%{filter:drop-shadow(0 0 9px #ffcf54)}}
+.tree-ground{position:absolute;bottom:8%;left:10%;width:85%;height:12px;border-radius:50%;background:#dca2bc55;filter:blur(6px)}.tree-button{position:absolute;bottom:0;left:50%;transform:translateX(-50%);white-space:nowrap;padding:11px 17px;font-size:12px}
+#letterScreen{background:radial-gradient(circle at top,#fffaf5,#ffdce9);overflow-y:auto;align-items:flex-start}.letter-wrap{width:min(100%,480px);margin:auto;padding:8px 0}.letter{background:linear-gradient(145deg,#fffaf0,#fff1e8);border:1px solid #f0bfd1;box-shadow:0 18px 42px #b83b7224;border-radius:7px;padding:clamp(20px,5vw,30px);position:relative}.letter:before{content:'✿  ♡  ✿';position:absolute;top:9px;left:13px;color:#e89bbd;font-size:13px}.letter:after{content:'✿  ♡  ✿';position:absolute;bottom:8px;right:13px;color:#e89bbd;font-size:13px}.letter h2{text-align:center;font-family:'Noto Serif Bengali',serif;font-size:24px;color:#b82472;margin:18px 0 15px}.letter p{font-family:'Noto Serif Bengali',serif;font-size:13px;line-height:2;color:#6e3c54;margin:0 0 13px}.letter .english-note{font-family:'Playfair Display',serif;font-style:italic;text-align:center;color:#b24d7d;font-size:15px;line-height:1.65;margin:14px 0}.letter-actions{text-align:center;margin:18px 0 8px}
+.float-layer,.firework-layer{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:8}.float-item{position:absolute;bottom:-50px;animation:rise var(--dur,7s) linear forwards;opacity:0;font-size:var(--size,24px)}@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:.9}100%{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.burst{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c);animation:burst 1.15s ease-out forwards}.burst:before,.burst:after{content:'';position:absolute;inset:-1px;border-radius:50%;box-shadow:0 -24px 0 var(--c),17px -17px 0 var(--c),24px 0 0 var(--c),17px 17px 0 var(--c),0 24px 0 var(--c),-17px 17px 0 var(--c),-24px 0 0 var(--c),-17px -17px 0 var(--c)}@keyframes burst{0%{opacity:0;transform:scale(.1)}20%{opacity:1}100%{opacity:0;transform:scale(1.2)}}
+@media(max-height:650px){.tree-copy{margin-bottom:14%}.tree-art{height:60vh}.letter p{font-size:12px;line-height:1.8}.screen{padding-top:15px;padding-bottom:15px}}@media(min-width:600px){.tree-copy{margin-bottom:12%}.tree-copy h1{font-size:46px}.tree-art{width:42%}}
+</style>
+</head>
+<body>
+<div class="float-layer" id="floatLayer"></div><div class="firework-layer" id="fireworkLayer"></div>
+<section class="screen active" id="envelopeScreen">
+ <div class="eyebrow">A little birthday surprise</div>
+ <div class="envelope" id="openEnvelope" role="button" aria-label="Open birthday surprise" tabindex="0"><div class="env-back"></div><div class="env-flap"></div><div class="env-left"></div><div class="env-right"></div><div class="env-bottom"></div><div class="seal">♥</div></div>
+ <div><div class="title" style="font-size:clamp(27px,7vw,37px);color:#b52a76">A letter for you</div><p class="bengali small">একটা ছোট্ট সারপ্রাইজ, তোমার জন্য 💗</p></div>
+ <button class="btn" id="openBtn">খামটি খুলুন ♡</button><p class="small">Tap to begin</p>
+</section>
+<section class="screen" id="cakeScreen">
+ <div class="eyebrow">A wish from the heart</div><div class="cake-scene"><div class="candles">🕯️🕯️🕯️</div><div class="cake">🎂</div></div>
+ <h1 class="title" style="font-size:clamp(28px,8vw,40px);color:#b51f70;margin:0">A little wish, just for you…</h1>
+ <p class="small">Make a wish, Fariha ✨</p><button class="btn" id="toTree">Let the magic bloom ✨</button>
+</section>
+<section class="screen" id="treeScreen">
+ <div class="tree-copy"><div class="eyebrow">Today is all about you</div><h1 class="title">Happy Birthday,<br>Fariha!</h1><p>May your days bloom with little joys, sweet memories, and lovely surprises. ♡</p></div>
+ <div class="tree-art" aria-label="A pink heart blossom tree"><div class="canopy" id="canopy"></div><div class="branch left"></div><div class="branch right"></div><div class="trunk"></div><div class="tree-ground"></div><button class="btn tree-button" id="toLetter">Read your letter ↓</button></div>
+</section>
+<section class="screen" id="letterScreen"><div class="letter-wrap"><article class="letter">
+ <h2>প্রিয় ফারিহা, 🌸</h2>
+ <p>শুভ জন্মদিন, ফারিহা! 🎂💗 আজকের দিনটা তোমার জন্য অনেক সুন্দর আর আনন্দে ভরা হোক। তোমার মুখে হাসি থাকুক, আর ছোট ছোট মুহূর্তগুলোও হয়ে উঠুক অনেক স্পেশাল।</p>
+ <p>জীবনের নতুন বছরটা তোমার জন্য নিয়ে আসুক নতুন আনন্দ, সুন্দর অভিজ্ঞতা আর অনেক ভালো স্মৃতি। তোমার ছোট ছোট ইচ্ছেগুলো পূরণ হোক, নিজের স্বপ্নগুলোর পেছনে সাহস নিয়ে এগিয়ে যেয়ো—আর মন খারাপের দিনেও মনে রেখো, তোমার পাশে আপন মানুষগুলো আছে।</p>
+ <p class="english-note">May your special day be filled with sweet surprises, beautiful memories, and a thousand little reasons to smile. Keep dreaming, keep shining, and always be your lovely self. ✨</p>
+ <p>তোমার জন্য অনেক অনেক দোয়া আর শুভকামনা রইল। আল্লাহ তোমাকে সুস্থ রাখুন, ভালো রাখুন, আর তোমার সামনে সুন্দর সুন্দর পথ খুলে দিন। আজকের এই ছোট্ট সারপ্রাইজটা তোমার মুখে একটুখানি হাসি আনতে পারলেই আমার আয়োজন সার্থক। ♡</p>
+ <p style="text-align:right;margin-top:12px">অনেক আদর ও শুভকামনা 💗<br>তোমার আপনজন</p>
+ </article><div class="letter-actions"><button class="btn" id="again">Read it again ♡</button></div></div></section>
+<!-- Keep romantic-dream-piano.mp3 beside index.html in the GitHub repository -->
+<audio id="bgMusic" src="romantic-dream-piano.mp3" loop preload="auto"></audio>
+<script>
+const $=id=>document.getElementById(id);const screens=['envelopeScreen','cakeScreen','treeScreen','letterScreen'];
+function show(id){screens.forEach(s=>$(s).classList.toggle('active',s===id))}
+function fireworks(duration=2600,density=4){const layer=$('fireworkLayer'),colors=['#ff4fa0','#ffb52e','#ff8bc2','#ffd166','#fff'];const end=Date.now()+duration;function frame(){if(Date.now()>end)return;for(let i=0;i<density;i++){const b=document.createElement('i');b.className='burst';b.style.left=(4+Math.random()*92)+'%';b.style.top=(7+Math.random()*76)+'%';b.style.setProperty('--c',colors[Math.floor(Math.random()*colors.length)]);layer.appendChild(b);setTimeout(()=>b.remove(),1300)}setTimeout(frame,430)}frame()}
+function floatHearts(duration=8000){const layer=$('floatLayer'),symbols=['💗','💕','💖','♡','✨','🌸','🩷'];const end=Date.now()+duration;function spawn(){if(Date.now()>end)return;const e=document.createElement('span');e.className='float-item';e.textContent=symbols[Math.floor(Math.random()*symbols.length)];e.style.left=Math.random()*96+'%';e.style.setProperty('--dur',(5+Math.random()*5)+'s');e.style.setProperty('--size',(14+Math.random()*22)+'px');layer.appendChild(e);setTimeout(()=>e.remove(),11000);setTimeout(spawn,300)}spawn()}
+function begin(){show('cakeScreen');const music=$('bgMusic');music.volume=.6;music.play().catch(()=>console.info('If music does not start, check the MP3 filename and tap again.'));fireworks(3200,5)}
+$('openEnvelope').addEventListener('click',begin);$('openEnvelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();begin()}});$('openBtn').addEventListener('click',begin);
+$('toTree').addEventListener('click',()=>{show('treeScreen');fireworks(1900,3)});
+$('toLetter').addEventListener('click',()=>{show('letterScreen');fireworks(2300,3);floatHearts(6500)});
+$('again').addEventListener('click',()=>{show('letterScreen');window.scrollTo(0,0);fireworks(1300,2)});
+const canopy=$('canopy'),positions=[[17,16],[37,9],[58,12],[75,18],[8,35],[27,30],[47,27],[68,34],[86,38],[16,53],[37,47],[58,50],[76,54],[28,67],[51,66],[68,70]];
+positions.forEach((p,i)=>{const e=document.createElement('span');e.className='leaf';e.textContent=['💗','💖','💘','💕','🩷'][i%5];e.style.left=p[0]+'%';e.style.top=p[1]+'%';e.style.animationDelay=(2.6+i*.12)+'s, '+(Math.random()*1.5)+'s';canopy.appendChild(e)});
+</script>
+</body></html>
